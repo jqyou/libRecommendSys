@@ -1,0 +1,21 @@
+@CHARSET "UTF-8";
+body{
+	  background: url(/LibRecommendSys/image/cp-bg.jpg) no-repeat;
+	  background-size: 100%;
+	  margin:0px;
+	  padding:0px;
+}
+img{
+	position:relative;
+	margin-left:200px;
+	margin-bottom:400px;
+}
+.a-bslogo{
+	position:relative;
+	top:220px;
+}
+.a-pplogo{
+	position:relative;
+    left:-300px;
+	top:450px;
+}

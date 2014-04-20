@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;">
+<link rel="stylesheet" type="text/css" href="/LibRecommendSys/css/login.css" />
+<!-- <script src="/Lib/js/jQuery1.82.js" type="text/javascript"></script>
+<script src="/Lib/js/login.js" type="text/javascript" charset="UTF-8"></script> -->
+<title>个性化图书馆服务系统-用户注册</title>
+</head>
+<body>
+	<div id="main">
+		<div id="regist" class="regist">
+			<div class="title">欢迎您注册个性化图书馆服务系统</div>
+			<form action="regist" method="post">
+			<ul class="regist-text">
+				<li>学号</li>
+				<li>工号</li>
+				<li>姓名</li>
+				<li>密码</li>
+				<li>职称</li>
+				<li>电话</li>
+				<li>邮箱</li>
+				<li>学院</li>
+				<li>兴趣</li>
+			</ul>
+			<ul class="regist-input">
+				<li><input type="text" id="xh" name="studentid"><br/></li>
+				<li><input type="text" id="xh" name="teacherid"><br/></li>
+				<li><input type="text" id="xm" name="username"></li>
+				<li><input type="password" id="mm" name="userpassword"></li>
+				<li><input type="text" name="userrole"></li>
+				<li><input type="text" id="dh" name="userphone"></li>
+ 				<li><input type="text" id="yj" name="useremail"></li>
+				<li>
+					<select id="bm" name="userdepartment">
+							<option value="">--选择学院--</option>
+							<option>示范性软件学院</option>
+							<option>通信与信息工程学院</option>
+							<option>电子工程学院</option>
+							<option>微电子与固体电子学院</option>
+							<option>物理电子学院</option>
+							<option>计算机科学与工程学院</option>
+							<option>自动化工程学院</option>
+							<option>机械电子工程学院</option>
+							<option>光电信息学院</option>
+							<option>生命科学与技术学院</option>
+							<option>数学学院</option>
+					</select>
+				</li>
+				<li>
+				<select id="sryear" name="habit" ><!-- class="selectform" -->
+							<option value="">--选择兴趣--</option>
+							<option>小说</option>
+							<option>文学</option>
+							<option>青春</option>
+							<option>艺术</option>
+							<option>动漫</option>
+							<option>旅游</option>
+							<option>地理</option>
+							<option>生活</option>
+							<option>体育</option>
+							<option>励志</option>
+							<option>管理</option>
+							<option>经济</option>
+							<option>法律</option>
+							<option>政治</option>
+							<option>哲学</option>
+							<option>科技</option>
+					</select> 
+				</li>
+			</ul>
+			<div class="regbtn">
+				<input type="submit" value="注册"/>
+				<input type="reset" value="重置"/>
+			</div>
+			</form>
+		</div>
+		<a href="Login.html" class="enter" id="switch" onclick="Change()">
+			快速登录&gt;&gt;</a>
+		</div>
+</body>
+</html>

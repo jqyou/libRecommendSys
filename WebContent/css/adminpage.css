@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+.divad1{
+	width:550px;
+	height:550px;
+	margin-left:450px;
+	margin-top:-550px;
+	border:1px; 
+    border-color:#000;   
+    border-style:dashed; 
+    text-align:left;  
+}

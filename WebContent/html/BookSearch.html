@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/LibRecommendSys/css/booksearch.css" />
+<!-- <script type="text/javascript">
+function createMain(){
+        var _scrollWidth=Math.max(document.body.scrollWidth,document.documentElement.scrollWidth);
+        var _scrollHeight=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+        document.getElementById("main").style.left=(_scrollWidth-950)/2+"px";
+    }
+</script> -->
+<title>图书搜索</title>
+</head>
+<body class="body">
+    <div class="main" id="main">
+        <div class="search">
+            <img src="/LibRecommendSys/image/booksearch.jpg"/>
+            <div class="searchbar">
+                <input id="ST" class="searchtext" type="text" dir="搜索图书" value="" style="color: #777;" onfocus="if(this.value==this.getAttribute('dir')){this.value=''} this.style.color='#000'" onblur="if(this.value==''){this.value=this.getAttribute('dir')}this.style.color='#777'"/>
+                <input type="button" value="搜索" class="searchbtn"/>
+            </div>
+            <div class="popSearch">
+
+            </div>
+        </div>
+        <div class="result" id="result">
+            <div class="resulttitle">
+                <label class="titlebold">搜索结果：</label>                
+            </div>
+            <div class="resultList">
+                <div class='eachbook'>
+                	<div class='booktitle'>
+                		<a href='#' target='_blank'>程序员面试 </a>&nbsp;
+                		<ul class="shuxing">
+	                		<li style="list-style-type:none;margin-top:10px;">作者：</li>
+	                		<li style="list-style-type:none;margin-top:10px;">类别：</li>
+	                		<li style="list-style-type:none;margin-top:10px;">索书号：</li>
+                		</ul>
+                	</div>
+                	<div class='bookdes'></div>
+                </div>
+                <div class='eachbook'>
+                	<div class='booktitle'>
+                		<a href='#' target='_blank'>数据结构 </a>&nbsp;
+                		<ul class="shuxing">
+	                		<li style="list-style-type:none;margin-top:10px;">作者：</li>
+	                		<li style="list-style-type:none;margin-top:10px;">类别：</li>
+	                		<li style="list-style-type:none;margin-top:10px;">索书号：</li>
+                		</ul>
+                	</div>
+                	<div class='bookdes'></div>
+                </div>
+                <div class='eachbook'>
+                	<div class='booktitle'>
+                		<a href='#' target='_blank'>操作系统 </a>&nbsp;
+                		<ul class="shuxing">
+	                		<li style="list-style-type:none;margin-top:10px;">作者：</li>
+	                		<li style="list-style-type:none;margin-top:10px;">类别：</li>
+	                		<li style="list-style-type:none;margin-top:10px;">索书号：</li>
+                		</ul>
+                	</div>
+                	<div class='bookdes'></div>
+                </div>
+         
+            </div>  
+        </div>
+    </div>
+   <!--  <script>    
+        createMain();
+    </script> -->
+    <div class="topbar">
+        <div class="logo">
+            <img src="/LibRecommendSys/image/toplogo.jpg"/>
+        </div>
+        <div class="navi">
+            <ul class="naviul">
+                <li><a href="/LibRecommendSys/html/UserPage.html" class="outli" ><img src="/LibRecommendSys/image/pplogo.jpg"></a></li>
+				<li><a href="/LibRecommendSys/html/BookList.html" class="outli"><img src="/LibRecommendSys/image/bllogo.jpg"></a></li>
+			
+            </ul>
+        </div>
+     </div>
+        
+</body>
+</html>

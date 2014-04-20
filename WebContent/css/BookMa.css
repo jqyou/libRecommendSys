@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+.divbm{
+	width:500px;
+	height:500px;
+	margin-left:450px;
+	margin-top:60px;
+	border:1px; 
+    border-color:#000;   
+    border-style:dashed; 
+    text-align:left;
+}
+.btnadd
+{
+	background:url("/LibRecommendSys/image/addlogo.jpg") no-repeat;
+	width:80px;
+	height:60px;
+}
+.btnmd
+{
+	background:url("/LibRecommendSys/image/modifylogo.jpg") no-repeat;
+	width:80px;
+	height:60px;
+}
+.btndel
+{
+	background:url("/LibRecommendSys/image/deletelogo.jpg") no-repeat;
+	width:80px;
+	height:60px;
+}

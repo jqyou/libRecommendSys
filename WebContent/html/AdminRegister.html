@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/LibRecommendSys/css/login.css" />
+<title>个性化图书馆服务系统-管理员注册</title>
+</head>
+<body>
+	<div id="main">
+		<div id="regist" class="regist">
+			<div class="title">欢迎管理员注册个性化图书馆服务系统</div>
+			<form action="regist" method="post">
+			<br>
+			<br>
+			<br>
+			<ul class="regist-text">
+				<li>工号</li>
+				<li>姓名</li>
+				<li>密码</li>
+				<li>职称</li>
+				<li>电话</li>
+				<li>邮箱</li>
+			</ul>
+			<ul class="regist-input">
+				<li><input type="text" id="xh" name="schoolid"><br/></li>
+				<li><input type="text" id="xm" name="username"></li>
+				<li><input type="password" id="mm" name="userpassword"></li>
+				<li><input type="text" name="userrole"></li>
+				<li><input type="text" id="dh" name="userphone"></li>
+ 				<li><input type="text" id="yj" name="useremail"></li>
+			</ul>
+			<div class="adregbtn">
+				<input type="submit" value="注册"/>
+				<input type="reset" value="重置"/>
+			</div>
+			</form>
+		</div>
+		<a href="Login.html" class="enter" id="switch" onclick="Change()">
+			快速登录&gt;&gt;</a>
+		</div>
+</body>
+</html>
