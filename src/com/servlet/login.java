@@ -70,9 +70,9 @@ public class login extends HttpServlet {
 		int[] WhichInt = {0,0};
 		ResultSet rsUserID= connect.executeQuery("select id from login where id=? and pwd=?",sqlparam, WhichInt);
 		if(rsUserID.next()) {
+			session.setAttribute("pid",userid );
 			return true;
 		} else {
-			session.setAttribute("pid",userid );
 			return false;
 		}
 //			

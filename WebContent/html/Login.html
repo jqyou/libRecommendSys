@@ -8,7 +8,7 @@
 <script type="text/javascript">
 $(document).ready(function() {  
 	$("#tijiao").click(function(){
-		$.post("login",{
+		$.post("/LibRecommendSys/login",{
 			Userid:$("#userid").val(),
 			UserPassword:$("#pwd").val()
 		},function(data){
