@@ -41,7 +41,7 @@ public class loginFilter implements Filter {
 		StringBuffer pathString = ((HttpServletRequest)request).getRequestURL();
 		System.out.println(pathString.toString());
 		if (pathString.toString().endsWith("Login.html") || pathString.toString().endsWith("AdminRegister.html")
-				|| pathString.toString().endsWith("LibRecommendSys/")){
+				|| pathString.toString().endsWith("LibRecommendSys/") || pathString.toString().endsWith("Register.html")){
 			chain.doFilter(request, response);
 		}else {
 			// pass the request along the filter chain

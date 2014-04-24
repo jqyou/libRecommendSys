@@ -5,16 +5,40 @@
 <link rel="stylesheet" type="text/css" href="/LibRecommendSys/css/login.css" />
 <!-- <script src="/Lib/js/jQuery1.82.js" type="text/javascript"></script>
 <script src="/Lib/js/login.js" type="text/javascript" charset="UTF-8"></script> -->
+<script src="/LibRecommendSys/js/jQuery1.82.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {  
+	$("#tijiao").click(function(){
+		$.post("/LibRecommendSys/regist",{
+			xh:$("#xh").val(),
+			xm:$("#xm").val(),
+			pwd:$("#password").val(),
+			proTitle:$("#proTitle").val(),
+			email:$("#email").val(),
+			userdepartment:$("#userdepartment").val(),
+			habit:$("#habit").val(),
+			grade:$("#grade").val(),
+			dh:$("#dh").val()
+		},function(data){
+			if (data == "false"){
+				alert("注册失败");
+			} else if (data == "true") {
+				alert("注册成功");
+				window.location.href="/LibRecommendSys/html/Login.html";
+			}
+		});
+	});
+});
+</script>
 <title>个性化图书馆服务系统-用户注册</title>
 </head>
 <body>
 	<div id="main">
 		<div id="regist" class="regist">
 			<div class="title">欢迎您注册个性化图书馆服务系统</div>
-			<form action="regist" method="post">
 			<ul class="regist-text">
-				<li>学号</li>
-				<li>工号</li>
+				<li>号码</li>
+				<!--li>工号</li-->
 				<li>姓名</li>
 				<li>密码</li>
 				<li>职称</li>
@@ -22,17 +46,18 @@
 				<li>邮箱</li>
 				<li>学院</li>
 				<li>兴趣</li>
+				<li>年级</li>
 			</ul>
 			<ul class="regist-input">
 				<li><input type="text" id="xh" name="studentid"><br/></li>
-				<li><input type="text" id="xh" name="teacherid"><br/></li>
+				<!--li><input type="text" id="xh" name="teacherid"><br/></li-->
 				<li><input type="text" id="xm" name="username"></li>
-				<li><input type="password" id="mm" name="userpassword"></li>
-				<li><input type="text" name="userrole"></li>
+				<li><input type="password" id="password" name="userpassword"></li>
+				<li><input type="text" id="proTitle" name="userrole"></li>
 				<li><input type="text" id="dh" name="userphone"></li>
- 				<li><input type="text" id="yj" name="useremail"></li>
+ 				<li><input type="text" id="email" name="useremail"></li>
 				<li>
-					<select id="bm" name="userdepartment">
+					<select id="userdepartment" name="userdepartment">
 							<option value="">--选择学院--</option>
 							<option>示范性软件学院</option>
 							<option>通信与信息工程学院</option>
@@ -48,7 +73,7 @@
 					</select>
 				</li>
 				<li>
-				<select id="sryear" name="habit" ><!-- class="selectform" -->
+				<select id="habit" name="habit" ><!-- class="selectform" -->
 							<option value="">--选择兴趣--</option>
 							<option>小说</option>
 							<option>文学</option>
@@ -68,12 +93,23 @@
 							<option>科技</option>
 					</select> 
 				</li>
+				<li>
+					<select id="grade" name="grade">
+							<option value="">--选择年级--</option>
+							<option>2008</option>
+							<option>2009</option>
+							<option>2010</option>
+							<option>2011</option>
+							<option>2012</option>
+							<option>2013</option>
+							<option>2014</option>
+					</select>
+				</li>
 			</ul>
 			<div class="regbtn">
-				<input type="submit" value="注册"/>
+				<input id="tijiao" type="submit" value="注册"/>
 				<input type="reset" value="重置"/>
 			</div>
-			</form>
 		</div>
 		<a href="Login.html" class="enter" id="switch" onclick="Change()">
 			快速登录&gt;&gt;</a>
