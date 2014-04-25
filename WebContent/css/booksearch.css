@@ -11,7 +11,7 @@
     position:fixed;
     left:0px;
     top:0px;
-    background:url(/LibraryTest/image//topbar.jpg); 
+    background:url(/LibRecommendSys/image/topbar.jpg); 
     border-color: #BBB; 
     width:100%;
     height:38px;
@@ -455,7 +455,7 @@ input[type="range"] {
 .buttonmodify{
 	margin-top:70px;
 	margin-left:500px;
-	background:url(/LibraryTest/image//modify1.jpg); 
+	background:url(/LibRecommendSys/image//modify1.jpg); 
 	width:85px;
     height:50px;
 	
@@ -463,7 +463,7 @@ input[type="range"] {
 .buttondelete{
 	margin-top:70px;
 
-	background:url(/LibraryTest/image//delete1.jpg); 
+	background:url(/LibRecommendSys/image//delete1.jpg); 
 	width:85px;
     height:50px;
 	
