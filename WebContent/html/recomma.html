@@ -2,12 +2,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<script src="/LibRecommendSys/js/jQuery1.82.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {  
+	$("#personalize").click(function(){
+		alert("start");
+		$.post("/LibRecommendSys/mining",{
+		},function(data){
+			if (data == "failure"){
+				alert("推荐失败");
+			} else if (data == "success") {
+				alert("推荐成功");
+				window.location.href="/LibRecommendSys/html/AdminPage.html";
+			}
+		});
+	});
+});
+</script>
 <title>推荐管理</title>
 </head>
 <body>
 <div>
   是否进行个性化图书推荐
-<input type="button" value="是"><input type="button" value="否">
+<input id="personalize" type="button" value="是"><input type="button" value="否">
 </div>
 <div>
   是否进行热门榜推荐

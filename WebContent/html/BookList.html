@@ -14,29 +14,30 @@ function createMain(){
 <script type="text/javascript">
 $(document).ready(function() {
 	$(".eachbook").remove();
-	$("#searchkey").click(function(){
-		$.post("/LibRecommendSys/search",{
-			keyword:$("#ST").val(),
-			requestPage:1
-		},function(data){
-			var json = data.book;
-			$(".eachbook").remove();
-			for(var i=0;i<(json.length-1);i++){
-			    $(".resultList").append("<div class='eachbook'>"
-	                	+"<div class='booktitle'>"
-	                	+"<a href='/LibRecommendSys/html/BookInfo.html?id="+json[i].id+"' target='_blank'>"+json[i].name+"</a>&nbsp;"
-	                		+"<ul class='shuxing'>"
-		                		+"<li style='list-style-type:none;margin-top:10px;'>作者："+json[i].author+"</li>"
-		                		+"<li style='list-style-type:none;margin-top:10px;'>类别："+json[i].type+"</li>"
-		                		+"<li style='list-style-type:none;margin-top:10px;'>索书号："+json[i].id+"</li>"
-	                		+"</ul>"
-	                	+"</div>"
-	                	+"<div class='bookdes'></div>"
-	                	+"</div>"        
-	                	);
-			}
-		},"json");
-	});
+	$(".listnum").remove();
+	$.get("/LibRecommendSys/bookRank",{
+		requestPage:1
+	},function(data){
+		var json = data.book;
+		$(".eachbook").remove();
+		for(var i=0;i<(json.length-1);i++){
+		    $(".resultList").append("<div class='eachbook'>"
+                	+"<div class='booktitle'>"
+                	+"<a href='/LibRecommendSys/html/BookInfo.html?id="+json[i].id+"' target='_blank'>"+json[i].name+"</a>&nbsp;"
+                		+"<ul class='shuxing'>"
+	                		+"<li style='list-style-type:none;margin-top:10px;'>作者："+json[i].author+"</li>"
+	                		+"<li style='list-style-type:none;margin-top:10px;'>类别："+json[i].type+"</li>"
+	                		+"<li style='list-style-type:none;margin-top:10px;'>索书号："+json[i].id+"</li>"
+                		+"</ul>"
+                	+"</div>"
+                	+"<div class='bookdes'></div>"
+                	+"</div>"
+                	+"<div class='listnum'>"
+                	+"<span>"+(i+1)+"</span>"
+                	+"</div>"
+                	);
+		}
+	},"json");
 });
 </script>
 <title>图书排行榜</title>

@@ -45,4 +45,24 @@
     <servlet-name>bookDetail</servlet-name>
     <url-pattern>/bookDetail</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>bookRank</display-name>
+    <servlet-name>bookRank</servlet-name>
+    <servlet-class>com.servlet.bookRank</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bookRank</servlet-name>
+    <url-pattern>/bookRank</url-pattern>
+  </servlet-mapping>
+   <servlet>
+    <description></description>
+    <display-name>mining</display-name>
+    <servlet-name>mining</servlet-name>
+    <servlet-class>com.servlet.mining</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mining</servlet-name>
+    <url-pattern>/mining</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -117,10 +117,10 @@ public class ConnectDB {
 			System.out.println(ex.getMessage());
 			ex.printStackTrace();
 			return flag;
-			
-		}finally{
-			closeConnection();
-		}
+		}	
+//		}finally{
+//			closeConnection();
+//		}
 		return flag;
 	}
 		

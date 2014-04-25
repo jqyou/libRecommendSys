@@ -41,7 +41,7 @@ public class bookRank extends HttpServlet {
 		String[] param =new String[0]; 
 		int[] which = new int[0];
 		String countsqlString= "select count(*) as B from libbook";
-		String rssqlString="select * from libbook where ORDER BY borrowcount DESC";
+		String rssqlString="select * from libbook ORDER BY borrowcount DESC";
 		int requestPage = Integer.parseInt(request.getParameter("requestPage"));        //得到当前页面是第几页
 		int onePageRec = 10;
 		try{
