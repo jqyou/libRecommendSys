@@ -6,8 +6,88 @@
 	href="/LibRecommendSys/css/personalpage.css" />
 <link rel="stylesheet" type="text/css"
 	href="/LibRecommendSys/css/adminpage.css" />
-	<link rel="stylesheet" type="text/css"
+<link rel="stylesheet" type="text/css"
 	href="/LibRecommendSys/css/BookMa.css" />
+<script src="/LibRecommendSys/js/jQuery1.82.js" type="text/javascript"></script>
+<script type="text/javascript">
+function GetQueryString(name)
+{
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     if(r!=null)return  unescape(r[2]); return null;
+}
+
+$(document).ready(function() {
+	var idstring = GetQueryString("id");
+	$.get("/LibRecommendSys/bookDetail",{
+		id: idstring
+	},function(data){
+		var json = data.bookdetail;
+		$("#shuming").attr("value",json[0].name);
+		$("#suoshuhao").attr("value",json[0].id);
+		$("#zuozhe").attr("value",json[0].author);
+		$("#jianjie").attr("value",json[0].text);
+		$("#jieyue").attr("value",json[0].isborrow);
+		$("#leixing").attr("value",json[0].type);
+		
+	},"json");
+
+	$(".btnadd").click(function(){
+		$.post("/LibRecommendSys/bookmanagent",{
+			id: idstring,
+			name: $("#shuming").val(),
+			author:$("#zuozhe").val(),
+			jianjie:$("#jianjie").val(),
+			isborrow:$("#jieyue").val(),
+			leixing:$("#leixing").val()
+		},function(data){
+			if (data == "success") {
+				alert("添加成功");
+			} else {
+				alert("添加失败")
+			}
+		});
+	});
+	
+	$(".btndel").click(function(){
+		$.post("/LibRecommendSys/bookmanagent",{
+			method:"delete",
+			id: idstring,
+		},function(data){
+			if (data == "success") {
+				alert("删除成功");
+				$("#shuming").attr("value","");
+				$("#suoshuhao").attr("value","");
+				$("#zuozhe").attr("value","");
+				$("#jianjie").attr("value","");
+				$("#jieyue").attr("value","");
+				$("#leixing").attr("value","");
+			} else {
+				alert("删除失败")
+			}
+		});
+	});
+	
+	$(".btnmd").click(function(){
+		$.post("/LibRecommendSys/bookmanagent",{
+			method:"modify",
+			oldid: idstring,
+			newid: $("#suoshuhao").val(),
+			name: $("#shuming").val(),
+			author:$("#zuozhe").val(),
+			jianjie:$("#jianjie").val(),
+			isborrow:$("#jieyue").val(),
+			leixing:$("#leixing").val()
+		},function(data){
+			if (data == "success") {
+				alert("修改成功");
+			} else {
+				alert("修改失败")
+			}
+		});
+	});
+});
+</script>
 <title>书籍管理</title>
 </head>
 <body>
@@ -24,11 +104,12 @@
 </div>
 <div class="divbm">
             <ul >
-			<center><li>书名<input type="text"name="studentid"><br/><br/></li></center>	
-			<center>	<li>索书号<input type="text"  name="teacherid"><br/><br/></li></center>
-			<center>	<li>作者<input type="text"  name="username"><br/><br/></li></center>
-			<center>	<li>简介<input type="text"  name="username"><br/><br/></li></center>
-			<center>	<li>借阅情况<input type="text"  name="username"><br/><br/></li></center>
+			<center><li>书名<input id="shuming" type="text" name="studentid"><br/><br/></li></center>	
+			<center>	<li>索书号<input id="suoshuhao" type="text"  name="teacherid"><br/><br/></li></center>
+			<center>	<li>作者<input id="zuozhe" type="text"  name="username"><br/><br/></li></center>
+			<center>	<li>类型<input id="leixing" type="text"  name="username"><br/><br/></li></center>
+			<center>	<li>简介<input id="jianjie" type="text"  name="username"><br/><br/></li></center>
+			<center>	<li>借阅情况<input id="jieyue" type="text"  name="username"><br/><br/></li></center>
 				
 			</ul>
 			<center><input type="button" class="btnadd">

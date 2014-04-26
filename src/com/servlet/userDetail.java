@@ -17,16 +17,16 @@ import net.sf.json.JSONObject;
 import com.javabean.ConnectDB;
 
 /**
- * Servlet implementation class bookDetail
+ * Servlet implementation class userDetail
  */
-@WebServlet("/bookDetail")
-public class bookDetail extends HttpServlet {
+@WebServlet("/userDetail")
+public class userDetail extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public bookDetail() {
+    public userDetail() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,7 +39,7 @@ public class bookDetail extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
-		String bookid = request.getParameter("id");
+		String useridString = request.getParameter("userid");
 		String[] param = {bookid};
 		int[] which = {0};
 		String sqlString = "select * from libbook where bookid = ?";

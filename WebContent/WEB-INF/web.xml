@@ -55,7 +55,7 @@
     <servlet-name>bookRank</servlet-name>
     <url-pattern>/bookRank</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>mining</display-name>
     <servlet-name>mining</servlet-name>
@@ -64,5 +64,15 @@
   <servlet-mapping>
     <servlet-name>mining</servlet-name>
     <url-pattern>/mining</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>bookmanagent</display-name>
+    <servlet-name>bookmanagent</servlet-name>
+    <servlet-class>com.servlet.bookmanagent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>bookmanagent</servlet-name>
+    <url-pattern>/bookmanagent</url-pattern>
   </servlet-mapping>
 </web-app>

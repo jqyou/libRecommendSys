@@ -53,11 +53,11 @@ public class regist extends HttpServlet {
 		String role = "3";
 		
 		if (id.startsWith("1")) {
-			role = "1";
+			role = "1";   //管理员
 		} else if (id.startsWith("2")) {
-			role = "2";
+			role = "2";   //教师
 		} else {
-			role = "3";
+			role = "3";   //学生
 		}
 		String[] sqlparam = {id,xm,pwd,proTitle,dh,email,userdepartment,habit,grade,role};
 		int[] WhichInt = {0,0,0,0,0,0,0,0,0,0};
