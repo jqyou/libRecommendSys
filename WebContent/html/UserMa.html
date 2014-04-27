@@ -19,27 +19,33 @@ function GetQueryString(name)
 
 $(document).ready(function() {
 	var idstring = GetQueryString("userid");
-	$.get("/LibRecommendSys/bookDetail",{
-		id: idstring
+	$.get("/LibRecommendSys/userDetail",{
+		userid: idstring
 	},function(data){
-		var json = data.bookdetail;
-		$("#shuming").attr("value",json[0].name);
-		$("#suoshuhao").attr("value",json[0].id);
-		$("#zuozhe").attr("value",json[0].author);
-		$("#jianjie").attr("value",json[0].text);
-		$("#jieyue").attr("value",json[0].isborrow);
-		$("#leixing").attr("value",json[0].type);
-		
+		var json = data.userdetail;
+		$("#yhm").attr("value",json[0].id);
+		$("#xm").attr("value",json[0].name);
+		$("#mm").attr("value",json[0].pwd);
+		$("#zc").attr("value",json[0].professionalTitle);
+		$("#dh").attr("value",json[0].phone);
+		$("#yx").attr("value",json[0].email);
+		$("#xy").attr("value",json[0].department);
+		$("#xq").attr("value",json[0].intrest);
+		$("#nj").attr("value",json[0].grade);		
 	},"json");
 
 	$(".btnadd").click(function(){
-		$.post("/LibRecommendSys/bookmanagent",{
-			id: idstring,
-			name: $("#shuming").val(),
-			author:$("#zuozhe").val(),
-			jianjie:$("#jianjie").val(),
-			isborrow:$("#jieyue").val(),
-			leixing:$("#leixing").val()
+		$.post("/LibRecommendSys/usermanagent",{
+			method:"add",
+			yhm:$("#yhm").val(),
+			xm:$("#xm").val(),
+			mm:$("#mm").val(),
+			zc:$("#zc").val(),
+			dh:$("#dh").val(),
+			yx:$("#yx").val(),
+			xy:$("#xy").val(),
+			xq:$("#xq").val(),
+			nj:$("#nj").val()
 		},function(data){
 			if (data == "success") {
 				alert("添加成功");
@@ -50,18 +56,21 @@ $(document).ready(function() {
 	});
 	
 	$(".btndel").click(function(){
-		$.post("/LibRecommendSys/bookmanagent",{
+		$.post("/LibRecommendSys/usermanagent",{
 			method:"delete",
-			id: idstring,
+			yhm: idstring,
 		},function(data){
 			if (data == "success") {
 				alert("删除成功");
-				$("#shuming").attr("value","");
-				$("#suoshuhao").attr("value","");
-				$("#zuozhe").attr("value","");
-				$("#jianjie").attr("value","");
-				$("#jieyue").attr("value","");
-				$("#leixing").attr("value","");
+				$("#yhm").attr("value","");
+				$("#xm").attr("value","");
+				$("#mm").attr("value","");
+				$("#zc").attr("value","");
+				$("#dh").attr("value","");
+				$("#yx").attr("value","");
+				$("#xy").attr("value","");
+				$("#xq").attr("value","");
+				$("#nj").attr("value","");	
 			} else {
 				alert("删除失败")
 			}
@@ -69,15 +78,18 @@ $(document).ready(function() {
 	});
 	
 	$(".btnmd").click(function(){
-		$.post("/LibRecommendSys/bookmanagent",{
+		$.post("/LibRecommendSys/usermanagent",{
 			method:"modify",
-			oldid: idstring,
-			newid: $("#suoshuhao").val(),
-			name: $("#shuming").val(),
-			author:$("#zuozhe").val(),
-			jianjie:$("#jianjie").val(),
-			isborrow:$("#jieyue").val(),
-			leixing:$("#leixing").val()
+			oldyhm:idstring,
+			yhm:$("#yhm").val(),
+			xm:$("#xm").val(),
+			mm:$("#mm").val(),
+			zc:$("#zc").val(),
+			dh:$("#dh").val(),
+			yx:$("#yx").val(),
+			xy:$("#xy").val(),
+			xq:$("#xq").val(),
+			nj:$("#nj").val()
 		},function(data){
 			if (data == "success") {
 				alert("修改成功");

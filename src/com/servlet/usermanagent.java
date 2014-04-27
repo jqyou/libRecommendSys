@@ -70,7 +70,7 @@ public class usermanagent extends HttpServlet {
 			String xqString = request.getParameter("xq");
 			String njString = request.getParameter("nj");
 			String role = "3";
-			
+			System.out.println(oldidString+" "+newidString);
 			if (newidString.startsWith("1")) {
 				role = "1";   //π‹¿Ì‘±
 			} else if (newidString.startsWith("2")) {

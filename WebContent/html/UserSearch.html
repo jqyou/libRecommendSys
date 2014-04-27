@@ -11,6 +11,71 @@ function createMain(){
         document.getElementById("main").style.left=(_scrollWidth-950)/2+"px";
     }
 </script> -->
+<script src="/LibRecommendSys/js/jQuery1.82.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	var role = "other";
+	$(".eachbook").remove();
+	
+	$.get("/LibRecommendSys/roleIdentity",{		
+	},function(data){
+		if (data == "admin") {
+			role = "admin";
+		} else if (data == "teacher") {
+			role = "teacher";
+		} else if (data == "other") {
+			role = "other"
+		}
+	});
+	
+	$(".buttondelete").live("click", function() {
+		var idstring = $(this).attr("name");
+		$.post("/LibRecommendSys/usermanagent",{
+			method: "delete",
+			yhm: idstring
+		},function(data){
+			if (data == "success") {
+				$("#"+idstring+"").remove();
+			}
+		});
+	});
+	
+	$(".buttonmodify").live("click", function() {
+		var idstring = $(this).attr("name");
+		window.location.href = "/LibRecommendSys/html/UserMa.html?userid="+idstring+"";
+	});
+	
+	$(".searchbtn").click(function(){
+		$.post("/LibRecommendSys/searchUser",{
+			keyword:$("#ST").val(),
+			requestPage:1
+		},function(data){
+			var json = data.book;
+			$(".eachbook").remove();
+			for(var i=0;i<(json.length-1);i++){
+				var divs = "<div class='eachbook' id='"+json[i].yhm+"'>"
+                	+"<div class='booktitle'>"
+                	+"<a href='#'>"+json[i].name+"</a>&nbsp;"
+                		+"<ul class='shuxing'>"
+	                		+"<li style='list-style-type:none;margin-top:10px;'>学号："+json[i].yhm+"</li>"
+	                		+"<li style='list-style-type:none;margin-top:10px;'>年级："+json[i].grade+"</li>"
+	                		+"<li style='list-style-type:none;margin-top:10px;'>学院："+json[i].xy+"</li>"
+                		+"</ul>"
+                	+"</div>"
+                	+"<div class='bookdes'></div>";
+                if (role == "admin") {
+                	divs = divs + "<div>"
+							+"<input name='"+json[i].yhm+"' type='button' class='buttonmodify'>"
+		                	+"<input name='"+json[i].yhm+"' type='button' class='buttondelete'>"
+							+"</div>";
+                }
+                divs = divs + "</div>";      
+			    $(".resultList").append(divs);
+			}
+		},"json");
+	});
+});
+</script>
 <title>用户搜索</title>
 </head>
 <body class="body">
@@ -36,7 +101,7 @@ function createMain(){
 						<a href='#' target='_blank'>王二小 </a>&nbsp;
 						<ul class="shuxing">
 							<li style="list-style-type: none; margin-top: 10px;">学号：</li>
-							<li style="list-style-type: none; margin-top: 10px;">姓名：</li>
+							<li style="list-style-type: none; margin-top: 10px;">年级：</li>
 							<li style="list-style-type: none; margin-top: 10px;">学院：</li>
 						</ul>
 					</div>

@@ -75,4 +75,24 @@
     <servlet-name>bookmanagent</servlet-name>
     <url-pattern>/bookmanagent</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>usermanagent</display-name>
+    <servlet-name>usermanagent</servlet-name>
+    <servlet-class>com.servlet.usermanagent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>usermanagent</servlet-name>
+    <url-pattern>/usermanagent</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>userDetail</display-name>
+    <servlet-name>userDetail</servlet-name>
+    <servlet-class>com.servlet.userDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userDetail</servlet-name>
+    <url-pattern>/userDetail</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -40,9 +40,9 @@ public class userDetail extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		String useridString = request.getParameter("userid");
-		String[] param = {bookid};
+		String[] param = {useridString};
 		int[] which = {0};
-		String sqlString = "select * from libbook where bookid = ?";
+		String sqlString = "select * from login where id = ?";
 		try {
 			ConnectDB connectDB = new ConnectDB();
 			ResultSet record = connectDB.executeQuery(sqlString,param,which);
@@ -52,15 +52,18 @@ public class userDetail extends HttpServlet {
 		        JSONArray array = new JSONArray();
 		        JSONObject member = new JSONObject();  
 		        
-		        member.put("id", record.getString("bookid"));
-		        member.put("name", record.getString("bookname"));
-	            member.put("author", record.getString("bookauthor"));
-	            member.put("type", record.getString("booktype"));
-	            member.put("text", record.getString("brief"));
-	            member.put("isborrow", record.getString("isborrow"));
+		        member.put("id", record.getString("id"));
+		        member.put("name", record.getString("username"));
+	            member.put("pwd", record.getString("pwd"));
+	            member.put("professionalTitle", record.getString("professionalTitle"));
+	            member.put("phone", record.getString("phone"));
+	            member.put("email", record.getString("email"));
+	            member.put("department", record.getString("department"));
+	            member.put("intrest", record.getString("intrest"));
+	            member.put("grade", record.getString("grade"));
 	            array.add(member);  
 	            
-	            json.put("bookdetail", array);
+	            json.put("userdetail", array);
 	            out.print(json.toString());
 			} else {
 				out.print("no");
