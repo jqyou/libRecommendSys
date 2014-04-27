@@ -47,7 +47,7 @@ public class loginFilter implements Filter {
 			// pass the request along the filter chain
 			HttpSession session = ((HttpServletRequest)request).getSession();
 			//System.out.println(session.getAttribute("user"));
-			if(session.getAttribute("pid")==null){
+			if(session.getAttribute("pid") == null){
 				request.setCharacterEncoding("UTF-8");
 				response.setContentType("text/html;charset=UTF-8");
 				PrintWriter out = response.getWriter();

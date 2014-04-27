@@ -95,4 +95,14 @@
     <servlet-name>userDetail</servlet-name>
     <url-pattern>/userDetail</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>personBorrow</display-name>
+    <servlet-name>personBorrow</servlet-name>
+    <servlet-class>com.servlet.personBorrow</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>personBorrow</servlet-name>
+    <url-pattern>/personBorrow</url-pattern>
+  </servlet-mapping>
 </web-app>

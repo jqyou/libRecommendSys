@@ -68,9 +68,12 @@ public class login extends HttpServlet {
 		ConnectDB connect = new ConnectDB();
 		String[] sqlparam = {userid,password};
 		int[] WhichInt = {0,0};
-		ResultSet rsUserID= connect.executeQuery("select id from login where id=? and pwd=?",sqlparam, WhichInt);
+		ResultSet rsUserID= connect.executeQuery("select * from login where id=? and pwd=?",sqlparam, WhichInt);
 		if(rsUserID.next()) {
 			session.setAttribute("pid",userid );
+			session.setAttribute("name", rsUserID.getString("username"));
+			session.setAttribute("xq", rsUserID.getString("intrest"));
+			session.setAttribute("xy", rsUserID.getString("department"));
 			return true;
 		} else {
 			return false;
