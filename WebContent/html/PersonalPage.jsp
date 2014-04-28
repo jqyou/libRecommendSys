@@ -54,7 +54,6 @@ $(document).ready(function() {
 				<tr>
 					<th scope="col">姓名：</th>
 					<th scope="col"><%=session.getAttribute("name").toString() %></th>
-
 				</tr>
 				<tr>
 					<th scope="row">学院：</th>

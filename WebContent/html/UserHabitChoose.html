@@ -1,15 +1,72 @@
 <!DOCTYPE html>
 <html>
-  <head>
+ <head>
     <title>图书兴趣选择</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-   
-    
+    <meta name="apple-mobile-web-app-capable" content="yes"/>    
     <link href="/LibRecommendSys/css/userhabitchoose.css" type="text/css" rel="stylesheet"/>
+<script src="/LibRecommendSys/js/jQuery1.82.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#u0_input").attr("checked",json[0].A==1?true:false);
+	$.get("/LibRecommendSys/userhabit",{
+	},function(data){
+		var json = data.habitdetail;
+		$("#u0_input").attr("checked",json[0].A==1?true:false);
+		$("#u22_input").attr("checked",json[0].B==1?true:false);
+		$("#u8_input").attr("checked",json[0].C==1?true:false);
+		$("#u20_input").attr("checked",json[0].D==1?true:false);
+		$("#u10_input").attr("checked",json[0].E==1?true:false);
+		$("#u6_input").attr("checked",json[0].F==1?true:false);
+		$("#u12_input").attr("checked",json[0].G==1?true:false);
+		$("#u14_input").attr("checked",json[0].H==1?true:false);
+		$("#u18_input").attr("checked",json[0].I==1?true:false);
+		$("#u4_input").attr("checked",json[0].J==1?true:false);
+		$("#u2_input").attr("checked",json[0].K==1?true:false);
+		$("#u26_input").attr("checked",json[0].N==1?true:false);
+		$("#u16_input").attr("checked",json[0].O==1?true:false);
+		$("#u24_input").attr("checked",json[0].P==1?true:false);
+		$("#u40_input").attr("checked",json[0].Q==1?true:false);
+		$("#u38_input").attr("checked",json[0].R==1?true:false);
+		$("#u36_input").attr("checked",json[0].S==1?true:false);
+		$("#u34_input").attr("checked",json[0].T==1?true:false);
+		$("#u32_input").attr("checked",json[0].U==1?true:false);
+		$("#u30_input").attr("checked",json[0].V==1?true:false);
+		$("#u28_input").attr("checked",json[0].X==1?true:false);
+		$("#u42_input").attr("checked",json[0].Z==1?true:false);
+	},"json");	
+	
+	
+	$.post("/LibRecommendSys/userhabit",{
+		A:$("#u0_input").attr("checked")?"1":"0",
+		B:$("#u22_input").attr("checked")?"1":"0",
+		C:$("#u8_input").attr("checked")?"1":"0",
+		D:$("#u20_input").attr("checked")?"1":"0",
+		E:$("#u10_input").attr("checked")?"1":"0",
+		F:$("#u6_input").attr("checked")?"1":"0",
+		G:$("#u12_input").attr("checked")?"1":"0",
+		H:$("#u14_input").attr("checked")?"1":"0",
+		I:$("#u18_input").attr("checked")?"1":"0",
+		J:$("#u4_input").attr("checked")?"1":"0",
+		K:$("#u2_input").attr("checked")?"1":"0",
+		N:$("#u26_input").attr("checked")?"1":"0",
+		O:$("#u16_input").attr("checked")?"1":"0",
+		P:$("#u24_input").attr("checked")?"1":"0",
+		Q:$("#u40_input").attr("checked")?"1":"0",
+		R:$("#u38_input").attr("checked")?"1":"0",
+		S:$("#u36_input").attr("checked")?"1":"0",
+		T:$("#u34_input").attr("checked")?"1":"0",
+		U:$("#u32_input").attr("checked")?"1":"0",
+		V:$("#u30_input").attr("checked")?"1":"0",
+		X:$("#u28_input").attr("checked")?"1":"0",
+		Z:$("#u42_input").attr("checked")?"1":"0"
+	},function(data){
+	},"json");
+});
+</script>
    
-  </head>
+ </head>
   <body>
     <div id="base" class="">
 

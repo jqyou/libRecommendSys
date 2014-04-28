@@ -105,7 +105,7 @@
     <servlet-name>personBorrow</servlet-name>
     <url-pattern>/personBorrow</url-pattern>
   </servlet-mapping>
-   <servlet>
+  <servlet>
     <description></description>
     <display-name>userRecommend</display-name>
     <servlet-name>userRecommend</servlet-name>
@@ -114,6 +114,16 @@
   <servlet-mapping>
     <servlet-name>userRecommend</servlet-name>
     <url-pattern>/userRecommend</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <description></description>
+    <display-name>userhabit</display-name>
+    <servlet-name>userhabit</servlet-name>
+    <servlet-class>com.servlet.userhabit</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>userhabit</servlet-name>
+    <url-pattern>/userhabit</url-pattern>
   </servlet-mapping>
   
 </web-app>
