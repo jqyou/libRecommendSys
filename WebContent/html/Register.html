@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html;">
-<link rel="stylesheet" type="text/css" href="/LibRecommendSys/css/login.css" />
+<link rel="stylesheet" type="text/css"
+	href="/LibRecommendSys/css/login.css" />
 <!-- <script src="/Lib/js/jQuery1.82.js" type="text/javascript"></script>
 <script src="/Lib/js/login.js" type="text/javascript" charset="UTF-8"></script> -->
 <script src="/LibRecommendSys/js/jQuery1.82.js" type="text/javascript"></script>
@@ -49,70 +50,71 @@ $(document).ready(function() {
 				<li>年级</li>
 			</ul>
 			<ul class="regist-input">
-				<li><input type="text" id="xh" name="studentid"><br/></li>
+				<li><input type="text" id="xh" name="studentid"><br /></li>
 				<!--li><input type="text" id="xh" name="teacherid"><br/></li-->
 				<li><input type="text" id="xm" name="username"></li>
 				<li><input type="password" id="password" name="userpassword"></li>
 				<li><input type="text" id="proTitle" name="userrole"></li>
 				<li><input type="text" id="dh" name="userphone"></li>
- 				<li><input type="text" id="email" name="useremail"></li>
-				<li>
-					<select id="userdepartment" name="userdepartment">
-							<option value="">--选择学院--</option>
-							<option>示范性软件学院</option>
-							<option>通信与信息工程学院</option>
-							<option>电子工程学院</option>
-							<option>微电子与固体电子学院</option>
-							<option>物理电子学院</option>
-							<option>计算机科学与工程学院</option>
-							<option>自动化工程学院</option>
-							<option>机械电子工程学院</option>
-							<option>光电信息学院</option>
-							<option>生命科学与技术学院</option>
-							<option>数学学院</option>
-					</select>
-				</li>
-				<li>
-				<select id="habit" name="habit" ><!-- class="selectform" -->
-							<option value="">--选择兴趣--</option>
-							<option>小说</option>
-							<option>文学</option>
-							<option>青春</option>
-							<option>艺术</option>
-							<option>动漫</option>
-							<option>旅游</option>
-							<option>地理</option>
-							<option>生活</option>
-							<option>体育</option>
-							<option>励志</option>
-							<option>管理</option>
-							<option>经济</option>
-							<option>法律</option>
-							<option>政治</option>
-							<option>哲学</option>
-							<option>科技</option>
-					</select> 
-				</li>
-				<li>
-					<select id="grade" name="grade">
-							<option value="">--选择年级--</option>
-							<option>2008</option>
-							<option>2009</option>
-							<option>2010</option>
-							<option>2011</option>
-							<option>2012</option>
-							<option>2013</option>
-							<option>2014</option>
-					</select>
-				</li>
+				<li><input type="text" id="email" name="useremail"></li>
+				<li><select id="userdepartment" name="userdepartment">
+						<option value="">--选择学院--</option>
+						<option>示范性软件学院</option>
+						<option>通信与信息工程学院</option>
+						<option>电子工程学院</option>
+						<option>微电子与固体电子学院</option>
+						<option>物理电子学院</option>
+						<option>计算机科学与工程学院</option>
+						<option>自动化工程学院</option>
+						<option>机械电子工程学院</option>
+						<option>光电信息学院</option>
+						<option>生命科学与技术学院</option>
+						<option>数学学院</option>
+				</select></li>
+				<li><select id="habit" name="habit" class="ax_droplist">
+						<!-- class="selectform" -->
+						<option value="">--选择兴趣--</option>
+						<option value="A马克思主义、列宁主义、毛泽东思想、邓小平理论">A马克思主义、列宁主义、毛泽东思想、邓小平理论</option>
+						<option value="B哲学、宗教">B哲学、宗教</option>
+						<option value="C社会科学总论">C社会科学总论</option>
+						<option value="D政治、法律">D政治、法律</option>
+						<option value="E军事">E军事</option>
+						<option value="F经济">F经济</option>
+						<option value="G文化、科学、教育、体育">G文化、科学、教育、体育</option>
+						<option value="H语言、文字">H语言、文字</option>
+						<option value="I文学">I文学</option>
+						<option value="J艺术">J艺术</option>
+						<option value="K历史、地理">K历史、地理</option>
+						<option value="N自然科学总论">N自然科学总论</option>
+						<option value="O数理科学和化学">O数理科学和化学</option>
+						<option value="P天文学、地球科学">P天文学、地球科学</option>
+						<option value="Q生物科学">Q生物科学</option>
+						<option value="R医药、卫生">R医药、卫生</option>
+						<option value="S农业科学">S农业科学</option>
+						<option value="T工业技术">T工业技术</option>
+						<option value="U交通运输">U交通运输</option>
+						<option value="V航空、航天">V航空、航天</option>
+						<option value="X环境科学、安全科学">X环境科学、安全科学</option>
+						<option value="Z综合性图书">Z综合性图书</option>
+				</select></li>
+				<li><select id="grade" name="grade">
+						<option value="">--选择年级--</option>
+						<option>2008</option>
+						<option>2009</option>
+						<option>2010</option>
+						<option>2011</option>
+						<option>2012</option>
+						<option>2013</option>
+						<option>2014</option>
+				</select></li>
 			</ul>
 			<div class="regbtn">
-				<input id="tijiao" type="submit" value="注册"/>
-				<input type="reset" value="重置"/>
+				<input id="tijiao" type="submit" value="注册" /> <input type="reset"
+					value="重置" />
 			</div>
 		</div>
 		<a href="Login.html" class="enter" id="switch" onclick="Change()">
 			快速登录&gt;&gt;</a>
-		</div>
+	</div>
 </body>
 </html>
