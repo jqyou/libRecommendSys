@@ -286,3 +286,12 @@ body{
 .enteradmin:active{
 	border:none;
 }
+.ax_droplist {
+    color: #000000;
+    font-family: 'Arial Normal','Arial';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: left;
+}
