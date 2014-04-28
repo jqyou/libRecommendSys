@@ -128,8 +128,162 @@ public class userRecommend extends HttpServlet {
 			System.out.println(recommendBuffer.toString());
 			String recommedString = recommendBuffer.toString();
 			
-			String recommedBookInfoString = "select * from libbook where bookid in ("+recommedString+")";
-			String countRecommedBookInfoString = "select count(*) as B from libbook where bookid in ("+recommedString+")";
+			//deal the book type through the user habit
+			String queryIsexist = "select * from libhabit where idnum = ?";
+			String[] paramExist = {idString};
+			int[] whichExist = {0};
+			boolean exist = false;
+			StringBuffer sqlMaybe = new StringBuffer();
+			ResultSet rSet = connectDB.executeQuery(queryIsexist, paramExist, whichExist);
+		    if (rSet.next()){
+		        String A = rSet.getString("A");
+		        String B = rSet.getString("B");
+		        String C = rSet.getString("C");
+		        String D = rSet.getString("D");
+		        String E = rSet.getString("E");
+		        String F = rSet.getString("F");
+		        String G = rSet.getString("G");
+		        String H = rSet.getString("H");
+		        String I = rSet.getString("I");
+		        String J = rSet.getString("J");
+		        String K = rSet.getString("K");
+		        String N = rSet.getString("N");
+		        String O = rSet.getString("O");
+		        String P = rSet.getString("P");
+		        String Q = rSet.getString("Q");
+		        String R = rSet.getString("R");
+		        String S = rSet.getString("S");
+		        String T = rSet.getString("T");
+		        String U = rSet.getString("U");
+		        String V = rSet.getString("V");
+		        String X = rSet.getString("X");
+		        String Z = rSet.getString("Z");
+		        
+		        sqlMaybe = sqlMaybe.append(" and booktype in (");
+		        int originalLen = sqlMaybe.length();
+		        if (A.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("A");
+		        	sqlMaybe.append("',");
+		        }
+		        if (B.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("B");
+		        	sqlMaybe.append("',");
+		        }
+		        if (C.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("C");
+		        	sqlMaybe.append("',");
+		        }
+		        if (D.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("D");
+		        	sqlMaybe.append("',");
+		        }
+		        if (E.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("E");
+		        	sqlMaybe.append("',");
+		        }
+		        if (F.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("F");
+		        	sqlMaybe.append("',");
+		        }
+		        if (G.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("G");
+		        	sqlMaybe.append("',");
+		        }
+		        if (H.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("H");
+		        	sqlMaybe.append("',");
+		        }
+		        if (I.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("I");
+		        	sqlMaybe.append("',");
+		        }
+		        if (J.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("J");
+		        	sqlMaybe.append("',");
+		        }
+		        if (K.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("K");
+		        	sqlMaybe.append("',");
+		        }
+		        if (N.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("N");
+		        	sqlMaybe.append("',");
+		        }
+		        if (O.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("O");
+		        	sqlMaybe.append("',");
+		        }
+		        if (P.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("P");
+		        	sqlMaybe.append("',");
+		        }
+		        if (Q.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("Q");
+		        	sqlMaybe.append("',");
+		        }
+		        if (R.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("R");
+		        	sqlMaybe.append("',");
+		        }
+		        if (S.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("S");
+		        	sqlMaybe.append("',");
+		        }
+		        if (T.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("T");
+		        	sqlMaybe.append("',");
+		        }
+		        if (U.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("U");
+		        	sqlMaybe.append("',");
+		        }
+		        if (V.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("V");
+		        	sqlMaybe.append("',");
+		        }
+		        if (X.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("X");
+		        	sqlMaybe.append("',");
+		        }
+		        if (Z.equals("1")) {
+		        	sqlMaybe.append("'");
+		        	sqlMaybe.append("Z");
+		        	sqlMaybe.append("',");
+		        }
+		        
+		        if (sqlMaybe.length() == originalLen) {
+		        	sqlMaybe.delete(0, originalLen);
+		        } else {
+		        	sqlMaybe.deleteCharAt(sqlMaybe.length() - 1);
+		        	sqlMaybe.append(")");
+		        }
+		    }
+			
+			
+		    //SELECT THE BOOK RECOMMENDED
+			String recommedBookInfoString = "select * from libbook where bookid in ("+recommedString+")" + sqlMaybe.toString();
+			String countRecommedBookInfoString = "select count(*) as B from libbook where bookid in ("+recommedString+")" +sqlMaybe.toString();
 			
 			ResultSet rstotalRecord = connectDB.executeQuery(countRecommedBookInfoString,new String[0],new int[0]);
 			int totalrecord=0;

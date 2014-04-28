@@ -9,7 +9,6 @@
 <script src="/LibRecommendSys/js/jQuery1.82.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	$("#u0_input").attr("checked",json[0].A==1?true:false);
 	$.get("/LibRecommendSys/userhabit",{
 	},function(data){
 		var json = data.habitdetail;
@@ -37,32 +36,39 @@ $(document).ready(function() {
 		$("#u42_input").attr("checked",json[0].Z==1?true:false);
 	},"json");	
 	
-	
-	$.post("/LibRecommendSys/userhabit",{
-		A:$("#u0_input").attr("checked")?"1":"0",
-		B:$("#u22_input").attr("checked")?"1":"0",
-		C:$("#u8_input").attr("checked")?"1":"0",
-		D:$("#u20_input").attr("checked")?"1":"0",
-		E:$("#u10_input").attr("checked")?"1":"0",
-		F:$("#u6_input").attr("checked")?"1":"0",
-		G:$("#u12_input").attr("checked")?"1":"0",
-		H:$("#u14_input").attr("checked")?"1":"0",
-		I:$("#u18_input").attr("checked")?"1":"0",
-		J:$("#u4_input").attr("checked")?"1":"0",
-		K:$("#u2_input").attr("checked")?"1":"0",
-		N:$("#u26_input").attr("checked")?"1":"0",
-		O:$("#u16_input").attr("checked")?"1":"0",
-		P:$("#u24_input").attr("checked")?"1":"0",
-		Q:$("#u40_input").attr("checked")?"1":"0",
-		R:$("#u38_input").attr("checked")?"1":"0",
-		S:$("#u36_input").attr("checked")?"1":"0",
-		T:$("#u34_input").attr("checked")?"1":"0",
-		U:$("#u32_input").attr("checked")?"1":"0",
-		V:$("#u30_input").attr("checked")?"1":"0",
-		X:$("#u28_input").attr("checked")?"1":"0",
-		Z:$("#u42_input").attr("checked")?"1":"0"
-	},function(data){
-	},"json");
+	$("#u48_img").click(function(){
+		alert("start");
+		$.post("/LibRecommendSys/userhabit",{
+			A:$("#u0_input").attr("checked")?"1":"0",
+			B:$("#u22_input").attr("checked")?"1":"0",
+			C:$("#u8_input").attr("checked")?"1":"0",
+			D:$("#u20_input").attr("checked")?"1":"0",
+			E:$("#u10_input").attr("checked")?"1":"0",
+			F:$("#u6_input").attr("checked")?"1":"0",
+			G:$("#u12_input").attr("checked")?"1":"0",
+			H:$("#u14_input").attr("checked")?"1":"0",
+			I:$("#u18_input").attr("checked")?"1":"0",
+			J:$("#u4_input").attr("checked")?"1":"0",
+			K:$("#u2_input").attr("checked")?"1":"0",
+			N:$("#u26_input").attr("checked")?"1":"0",
+			O:$("#u16_input").attr("checked")?"1":"0",
+			P:$("#u24_input").attr("checked")?"1":"0",
+			Q:$("#u40_input").attr("checked")?"1":"0",
+			R:$("#u38_input").attr("checked")?"1":"0",
+			S:$("#u36_input").attr("checked")?"1":"0",
+			T:$("#u34_input").attr("checked")?"1":"0",
+			U:$("#u32_input").attr("checked")?"1":"0",
+			V:$("#u30_input").attr("checked")?"1":"0",
+			X:$("#u28_input").attr("checked")?"1":"0",
+			Z:$("#u42_input").attr("checked")?"1":"0"
+		},function(data){
+			if (data == "success") {
+				window.location.href="/LibRecommendSys/html/UserRecomPage.html";
+			} else {
+				alert("内部错误");
+			}
+		});
+	});
 });
 </script>
    

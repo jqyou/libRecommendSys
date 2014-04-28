@@ -45,12 +45,10 @@ public class userhabit extends HttpServlet {
 			return;
 		}
 		try {
-			String queryIsexist = "select * form libhabit where idnum = ?";
-			String[] param = {id};
-			int[] which = {0};
+			String queryIsexist = "select * from libhabit where idnum = "+id;
 			boolean exist = false;
 			ConnectDB connectDB = new ConnectDB();
-			ResultSet rSet = connectDB.executeQuery(queryIsexist, param, which);
+			ResultSet rSet = connectDB.executeQuery(queryIsexist, new String[0], new int[0]);
 			if (rSet.next()) {
 				JSONObject json = new JSONObject();  
 		        JSONArray array = new JSONArray();
@@ -127,7 +125,7 @@ public class userhabit extends HttpServlet {
 		String Z = request.getParameter("Z");
 		
 		try {
-			String queryIsexist = "select * form libhabit where idnum = ?";
+			String queryIsexist = "select * from libhabit where idnum = ?";
 			String[] param = {id};
 			int[] which = {0};
 			boolean exist = false;
@@ -151,7 +149,7 @@ public class userhabit extends HttpServlet {
 			if (isSuccess) {
 				out.print("success");
 			} else {
-				out.print("false");
+				out.print("failure");
 			}
 			
 		} catch (SQLException e) {

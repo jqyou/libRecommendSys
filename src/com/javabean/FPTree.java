@@ -116,6 +116,7 @@ public class FPTree {
                 		+" values(?,?,?,?,?,?,?,?)";
                 String[] param = {countString,oneString,twoString,threeString,foursString,fivesString,sixsString,sevenString};
                 int[] which = {0,0,0,0,0,0,0,0};
+                
                 boolean isSuccess = connectDB.updatesql(sqlString, param, which);
              }
         }
@@ -312,6 +313,8 @@ public class FPTree {
 	}
     
     public void mini() {
+    	String delString = "delete from libMini";
+    	boolean delSuccess = connectDB.updatesql(delString, new String[0], new int[0]);
     	List<List<String>> transRecords = readDB();
     	FPGrowth(transRecords, null);
 	}
