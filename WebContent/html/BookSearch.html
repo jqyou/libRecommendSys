@@ -20,6 +20,7 @@ $(document).ready(function() {
 	},function(data){
 		if (data == "admin") {
 			role = "admin";
+			$("#personalpage").attr("href","/LibRecommendSys/html/AdminPage.jsp")
 		} else if (data == "teacher") {
 			role = "teacher";
 		} else if (data == "other") {
@@ -122,7 +123,7 @@ $(document).ready(function() {
         </div>
         <div class="navi">
             <ul class="naviul">
-                <li><a href="/LibRecommendSys/html/UserPage.html" class="outli" ><img src="/LibRecommendSys/image/pplogo.jpg"></a></li>
+                <li><a id="personalpage" href="/LibRecommendSys/html/PersonalPage.jsp" class="outli" ><img src="/LibRecommendSys/image/pplogo.jpg"></a></li>
 				<li><a href="/LibRecommendSys/html/BookList.html" class="outli"><img src="/LibRecommendSys/image/bllogo.jpg"></a></li>
 			
             </ul>

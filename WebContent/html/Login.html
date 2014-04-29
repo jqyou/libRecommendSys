@@ -8,14 +8,20 @@
 <script type="text/javascript">
 $(document).ready(function() {  
 	$("#tijiao").click(function(){
+		var userid = $("#userid").val();
 		$.post("/LibRecommendSys/login",{
-			Userid:$("#userid").val(),
+			Userid:userid,
 			UserPassword:$("#pwd").val()
 		},function(data){
 			if (data == "false"){
 				alert("”√ªß√˚√‹¬Î¥ÌŒÛ");
 			} else if (data == "true") {
-				window.location.href="/LibRecommendSys/html/ChoosePage.html";
+				var start = userid.substr(0,1);
+				if (start == "1") {
+					window.location.href="/LibRecommendSys/html/AdminPage.jsp";
+				} else {
+					window.location.href="/LibRecommendSys/html/ChoosePage.html";	
+				}
 			}
 		});
 	});

@@ -15,6 +15,14 @@ function createMain(){
 $(document).ready(function() {
 	$(".eachbook").remove();
 	$(".listnum").remove();
+	
+	$.get("/LibRecommendSys/roleIdentity",{		
+	},function(data){
+		if (data == "admin") {
+			$("#personalpage").attr("href","/LibRecommendSys/html/AdminPage.jsp")
+		}
+	});
+	
 	$.get("/LibRecommendSys/bookRank",{
 		requestPage:1
 	},function(data){
@@ -106,7 +114,8 @@ $(document).ready(function() {
         </div>
         <div class="navi">
             <ul class="naviul">
-                <li><a href="/LibRecommendSys/html/UserPage.html" class="outli" ><img src="/LibRecommendSys/image/pplogo.jpg"></a></li>
+            
+                <li><a id="personalpage" href="/LibRecommendSys/html/PersonalPage.jsp" class="outli" ><img src="/LibRecommendSys/image/pplogo.jpg"></a></li>
 				<li><a href="/LibRecommendSys/html/BookList.html" class="outli"><img src="/LibRecommendSys/image/bllogo.jpg"></a></li>
 			
             </ul>
