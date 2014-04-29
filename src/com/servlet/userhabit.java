@@ -138,14 +138,23 @@ public class userhabit extends HttpServlet {
 			}
 			
 			String sqlString;
+			String[] habitparam = null;
+			int[] habitwhich = null; 
 			if(exist) {
-				sqlString = "update libhabit set A=?,B=?,C=?,D=?,E=?,F=?,H=?,I=?,J=?,K=?,N=?,O=?,P=?,Q=?,R=?,S=?,T=?,U=?,V=?,X=?,Z=? where idnum = ?";
+				sqlString = "update libhabit set A=?,B=?,C=?,D=?,E=?,F=?,G=?,H=?,I=?,J=?,K=?,N=?,O=?,P=?,Q=?,R=?,S=?,T=?,U=?,V=?,X=?,Z=? where idnum = ?";
+			 	String[] temphabitparam = {A,B,C,D,E,F,G,H,I,J,K,N,O,P,Q,R,S,T,U,V,X,Z,id};
+				int[] temphabitwhich = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+				habitparam = temphabitparam;
+				habitwhich = temphabitwhich;
 			} else {
 				sqlString = "insert into libhabit(A,B,C,D,E,F,G,H,I,J,K,N,O,P,Q,R,S,T,U,V,X,Z) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				String[] temphabitparam = {A,B,C,D,E,F,G,H,I,J,K,N,O,P,Q,R,S,T,U,V,X,Z};
+				int[] temphabitwhich = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+				habitparam = temphabitparam;
+				habitwhich = temphabitwhich;
 			}
-			String[] habitparam = {A,B,C,D,E,F,G,H,I,J,K,N,O,P,Q,R,S,T,U,V,X,Z};
-			int[] habitwhich = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 			boolean isSuccess = connectDB.updatesql(sqlString, habitparam, habitwhich);
+			
 			if (isSuccess) {
 				out.print("success");
 			} else {
