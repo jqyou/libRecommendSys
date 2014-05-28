@@ -7,19 +7,27 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
+import java.util.TimeZone;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.IntArrayData;
  
 public class FPTree {
  
     private int minSuport = 3;
+    private int maxBorrowNum = 7;
     private ConnectDB connectDB = null;
  
     public FPTree() {
@@ -312,9 +320,110 @@ public class FPTree {
     	return transaction;
 	}
     
+    private void generateHistory() {   	
+    	try {
+    		Random random1 = new Random(99);
+    		String delsString = "delete from libhistory";
+    		connectDB.updatesql(delsString, new String[0], new int[0]);
+    		
+    		String sqlString = "select * from libborrowrec  order by borrowerID, borrowTime";
+        	ResultSet rSet = connectDB.executeQuery(sqlString, new String[0], new int[0]);
+        	String usertempid = "";
+        	Date dateTemp = new Date();
+        	List<String> bookid = new LinkedList<String>();
+			while (rSet.next()) {
+				String useridString = rSet.getString("borrowerID");
+				Date date = rSet.getDate("borrowTime");
+				if (usertempid.equals(useridString)) {
+					if (dateTemp.equals(date)) {
+						bookid.add(rSet.getString("bookID"));
+					} else {
+						dateTemp = date;
+						if (!bookid.isEmpty()) {
+							SimpleDateFormat timeformat=new SimpleDateFormat("yyyyMMddHHmmss");
+							Date datetime = new Date();
+							String datetimeString = timeformat.format(datetime)+random1.nextInt();
+							StringBuffer insertHistroy = new StringBuffer();
+							insertHistroy.append( "insert libhistory values('"+ datetimeString+"',");
+							for (String bid : bookid) {
+								insertHistroy.append("'"+ bid + "',");
+							}
+							if (bookid.size() < maxBorrowNum) {
+								int countNUll = maxBorrowNum - bookid.size();
+								for (int k = 0; k < countNUll; k++) {
+									insertHistroy.append("null,");
+								}
+							}
+							insertHistroy.deleteCharAt(insertHistroy.length()-1);
+							insertHistroy.append(")");
+							System.out.println(insertHistroy.toString());
+							connectDB.updatesql(insertHistroy.toString(), new String[0], new int[0]);
+							
+							bookid.clear();
+							bookid.add(rSet.getString("bookID"));
+						}
+					}
+				} else {
+					usertempid = useridString;
+					dateTemp = date;
+					if (!bookid.isEmpty()) {
+						SimpleDateFormat timeformat=new SimpleDateFormat("yyyyMMddHHmmss");
+						Date datetime = new Date();
+						String datetimeString = timeformat.format(datetime)+random1.nextInt();
+						StringBuffer insertHistroy = new StringBuffer();
+						insertHistroy.append( "insert libhistory values('"+ datetimeString+"',");
+						for (String bid : bookid) {
+							insertHistroy.append("'"+ bid + "',");
+						}
+						if (bookid.size() < maxBorrowNum) {
+							int countNUll = maxBorrowNum - bookid.size();
+							for (int k = 0; k < countNUll; k++) {
+								insertHistroy.append("null,");
+							}
+						}
+						insertHistroy.deleteCharAt(insertHistroy.length()-1);
+						insertHistroy.append(")");
+						System.out.println(insertHistroy.toString());
+						connectDB.updatesql(insertHistroy.toString(), new String[0], new int[0]);
+						
+						bookid.clear();
+					}
+					bookid.add(rSet.getString("bookID"));
+				}
+			}
+			
+			if (!bookid.isEmpty()) {
+				SimpleDateFormat timeformat=new SimpleDateFormat("yyyyMMddHHmmss");
+				Date datetime = new Date();
+				String datetimeString = timeformat.format(datetime)+random1.nextInt();
+				StringBuffer insertHistroy = new StringBuffer();
+				insertHistroy.append( "insert libhistory values('"+ datetimeString+"',");
+				for (String bid : bookid) {
+					insertHistroy.append("'"+ bid + "',");
+				}
+				if (bookid.size() < maxBorrowNum) {
+					int countNUll = maxBorrowNum - bookid.size();
+					for (int k = 0; k < countNUll; k++) {
+						insertHistroy.append("null,");
+					}
+				}
+				insertHistroy.deleteCharAt(insertHistroy.length()-1);
+				insertHistroy.append(")");
+				System.out.println(insertHistroy.toString());
+				connectDB.updatesql(insertHistroy.toString(), new String[0], new int[0]);
+				
+				bookid.clear();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+    }
+    
     public void mini() {
     	String delString = "delete from libMini";
     	boolean delSuccess = connectDB.updatesql(delString, new String[0], new int[0]);
+    	generateHistory();
     	List<List<String>> transRecords = readDB();
     	FPGrowth(transRecords, null);
 	}

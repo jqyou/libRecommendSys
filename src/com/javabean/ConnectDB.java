@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.sun.jmx.snmp.Timestamp;
+
 public class ConnectDB {
 	private final String url = "jdbc:mysql://localhost/recommentlib?characterEncoding=utf8";
 	private final String userName = "root";
@@ -108,7 +110,8 @@ public class ConnectDB {
 					stmt_update.setLong(j+1,Long.parseLong(SqlParam[j].trim()));
 				}
 				else if(WhichInt[j]==3){
-					stmt_update.setDate(j+1, Date.valueOf(SqlParam[j]));
+					System.out.println(SqlParam[j]);
+					stmt_update.setTimestamp(j+1, new  java.sql.Timestamp(Long.parseLong(SqlParam[j])));
 				}
 			}
 			stmt_update.execute();

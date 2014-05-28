@@ -40,6 +40,21 @@ $(document).ready(function() {
 		});
 	});
 	
+	$(".buttonborrow").live("click", function() {
+		var idstring = $(this).attr("name");
+		
+		$.post("/LibRecommendSys/borrowBook",{
+			id: idstring
+		},function(data){
+			if (data == "success") {
+				alert("借阅成功");
+				$("#"+idstring+"buttonborrow").remove();
+			} else {
+				alert("借阅失败");
+			}
+		});
+	});
+	
 	$(".buttonmodify").live("click", function() {
 		var idstring = $(this).attr("name");
 		window.location.href = "/LibRecommendSys/html/BookMa.html?id="+idstring+"";
@@ -64,10 +79,24 @@ $(document).ready(function() {
                 	+"</div>"
                 	+"<div class='bookdes'></div>";
                 if (role == "admin") {
-                	divs = divs + "<div>"
-							+"<input name='"+json[i].id+"' type='button' class='buttonmodify'>"
-		                	+"<input name='"+json[i].id+"' type='button' class='buttondelete'>"
+                	if(json[i].isborrow == "未借") {
+                		divs = divs + "<div>"
+               				+"<input name='"+json[i].id+"' id='"+json[i].id+"buttonborrow' type='button' class='buttonborrow'>"
+							+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttonmodify'>"
+		                	+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttondelete'>"
 							+"</div>";
+                	} else {
+                		divs = divs + "<div>"
+							+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttonmodify'>"
+		                	+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttondelete'>"
+							+"</div>";
+                	}
+                }else {
+                	if(json[i].isborrow == "未借") {
+                    	divs = divs + "<div>"
+                    		+"<input name='"+json[i].id+"' id='"+json[i].id+"buttonborrow' type='button' class='buttonborrow'>"
+                    		+"</div>"
+                    }
                 }
                 divs = divs + "</div>";      
 			    $(".resultList").append(divs);

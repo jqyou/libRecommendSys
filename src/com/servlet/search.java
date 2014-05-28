@@ -88,6 +88,7 @@ public class search extends HttpServlet {
 	            member.put("name", rsdev.getString("bookname"));
 	            member.put("author", rsdev.getString("bookauthor"));
 	            member.put("type", rsdev.getString("booktype"));
+	            member.put("isborrow", rsdev.getString("isborrow"));
 	            array.add(member);  
 		    }
 		    member = new JSONObject();
