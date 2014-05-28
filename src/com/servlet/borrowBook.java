@@ -55,7 +55,7 @@ public class borrowBook extends HttpServlet {
 		ConnectDB insertconnectDB = new ConnectDB();
 		boolean isInsertSuccess = insertconnectDB.updatesql(insertRecString, insertparam, insertwhich);
 		if (isInsertSuccess) {
-			String sqlString = "update libbook set isborrow = 'ря╫Х' where bookid = ?";
+			String sqlString = "update libbook set isborrow = 'н╢╫Х' where bookid = ?";
 			String[] param = {idString};
 			int[] which = {0};
 			ConnectDB connectDB = new ConnectDB();
