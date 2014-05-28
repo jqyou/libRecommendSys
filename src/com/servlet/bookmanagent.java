@@ -82,25 +82,31 @@ public class bookmanagent extends HttpServlet {
 			}
 		} else if (methodsString.equals("add")) {
 			String bookidsString = request.getParameter("id");
-//			String bookidsString = UUID.randomUUID().toString();
-			String booknameString = request.getParameter("name");
-			String bookauthurString = request.getParameter("author");
-			String bookbriefString = request.getParameter("jianjie");
-			String bookisborrowString = request.getParameter("isborrow");
-			String booktypesString = request.getParameter("leixing");
-			String bookBorrowCountString = "0";
-			
-			String sqlString = "insert into libbook values(?,?,?,?,?,?,?)";
-			String[] param = {bookidsString,booknameString,bookauthurString,booktypesString,bookBorrowCountString,bookisborrowString,bookbriefString};
-			int[] which = {0,0,0,0,0,0,0};
-			ConnectDB connectDB = new ConnectDB();
-			boolean isSuccess = connectDB.updatesql(sqlString, param, which);
-			if (isSuccess) {
-				out.print("success");
-				System.out.println("add success");
-			} else {
+			if (bookidsString.isEmpty()) {
 				out.print("failure");
 				System.out.println("add failure");
+			}else{
+				System.out.println("bookid:"+bookidsString);
+	//			String bookidsString = UUID.randomUUID().toString();
+				String booknameString = request.getParameter("name");
+				String bookauthurString = request.getParameter("author");
+				String bookbriefString = request.getParameter("jianjie");
+				String bookisborrowString = request.getParameter("isborrow");
+				String booktypesString = request.getParameter("leixing");
+				String bookBorrowCountString = "0";
+				
+				String sqlString = "insert into libbook values(?,?,?,?,?,?,?)";
+				String[] param = {bookidsString,booknameString,bookauthurString,booktypesString,bookBorrowCountString,bookisborrowString,bookbriefString};
+				int[] which = {0,0,0,0,0,0,0};
+				ConnectDB connectDB = new ConnectDB();
+				boolean isSuccess = connectDB.updatesql(sqlString, param, which);
+				if (isSuccess) {
+					out.print("success");
+					System.out.println("add success");
+				} else {
+					out.print("failure");
+					System.out.println("add failure");
+				}
 			}
 		}
 		
