@@ -2,6 +2,7 @@ package com.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -81,6 +82,7 @@ public class bookmanagent extends HttpServlet {
 			}
 		} else if (methodsString.equals("add")) {
 			String bookidsString = request.getParameter("id");
+//			String bookidsString = UUID.randomUUID().toString();
 			String booknameString = request.getParameter("name");
 			String bookauthurString = request.getParameter("author");
 			String bookbriefString = request.getParameter("jianjie");

@@ -35,7 +35,7 @@ $(document).ready(function() {
 	$(".btnadd").click(function(){
 		$.post("/LibRecommendSys/bookmanagent",{
 			method:"add",
-			id: idstring,
+			id: $("#suoshuhao").val(),
 			name: $("#shuming").val(),
 			author:$("#zuozhe").val(),
 			jianjie:$("#jianjie").val(),
