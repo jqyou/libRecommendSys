@@ -87,6 +87,7 @@ public class bookmanagent extends HttpServlet {
 				System.out.println("add failure");
 			}else{
 				System.out.println("bookid:"+bookidsString);
+	//			String bookidsString = UUID.randomUUID().toString();
 				String booknameString = request.getParameter("name");
 				String bookauthurString = request.getParameter("author");
 				String bookbriefString = request.getParameter("jianjie");

@@ -79,18 +79,10 @@ $(document).ready(function() {
                 	+"</div>"
                 	+"<div class='bookdes'></div>";
                 if (role == "admin") {
-                	if(json[i].isborrow == "未借") {
-                		divs = divs + "<div>"
-               				+"<input name='"+json[i].id+"' id='"+json[i].id+"buttonborrow' type='button' class='buttonborrow'>"
-							+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttonmodify'>"
-		                	+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttondelete'>"
-							+"</div>";
-                	} else {
-                		divs = divs + "<div>"
-							+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttonmodify'>"
-		                	+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttondelete'>"
-							+"</div>";
-                	}
+               		divs = divs + "<div>"
+						+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttonmodify'>"
+	                	+"<input name='"+json[i].id+"' id='"+json[i].id+"' type='button' class='buttondelete'>"
+						+"</div>";
                 }else {
                 	if(json[i].isborrow == "未借") {
                     	divs = divs + "<div>"
